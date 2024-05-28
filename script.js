@@ -377,38 +377,15 @@ async function addWidgets() {
 
     const [
       Fullscreen,
-      BasemapGallery,
       Expand,
       ScaleBar,
-      AreaMeasurement2D,
-      Search,
       Home,
-      LayerList,
     ] = await Promise.all([
       loadModule("esri/widgets/Fullscreen"),
-      loadModule("esri/widgets/BasemapGallery"),
       loadModule("esri/widgets/Expand"),
       loadModule("esri/widgets/ScaleBar"),
-      loadModule("esri/widgets/AreaMeasurement2D"),
-      loadModule("esri/widgets/Search"),
       loadModule("esri/widgets/Home"),
-      loadModule("esri/widgets/LayerList"),
     ]);
-
-    var basemapGallery = new BasemapGallery({
-      view: view,
-    });
-
-    var Expand22 = new Expand({
-      view: view,
-      content: basemapGallery,
-      expandIcon: "basemap",
-      group: "top-right",
-      // expanded: false,
-      expandTooltip: "Open Basmap Gallery",
-      collapseTooltip: "Close",
-    });
-    view.ui.add([Expand22], { position: "top-right", index: 6 });
 
     var fullscreen = new Fullscreen({
       view: view,
@@ -421,42 +398,10 @@ async function addWidgets() {
     });
     view.ui.add(scalebar, "bottom-right");
 
-    var search = new Search({
-      //Add Search widget
-      view: view,
-    });
-    view.ui.add(search, { position: "top-left", index: 0 }); //Add to the map
-
     var homeWidget = new Home({
       view: view,
     });
     view.ui.add(homeWidget, "top-left");
-
-    var layerList = new LayerList({
-      view: view,
-      listItemCreatedFunction: function (event) {
-        var item = event.item;
-        // displays the legend for each layer list item
-        item.panel = {
-          content: "legend",
-        };
-      },
-      showLegend: true,
-    });
-
-    layerList.visibilityAppearance = "checkbox";
-    var Expand5 = new Expand({
-      view: view,
-      content: layerList,
-      expandIcon: "layers",
-      group: "top-right",
-      // expanded: false,
-      expandTooltip: "Layer List",
-      collapseTooltip: "Close",
-    });
-
-    view.ui.add([Expand5], { position: "top-left", index: 6 });
-    view.ui.add("controlsWidget", "top-right");
 
     await view.when();
 
