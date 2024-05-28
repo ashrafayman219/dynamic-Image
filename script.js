@@ -48,161 +48,19 @@ function loadModule(moduleName) {
 
 async function initializeDynamicImage() {
   try {
-    const [esriConfig, Map, WebScene, MapView, SceneView, FeatureLayer, Legend, GeoJSONLayer, ImageElement, MediaLayer, ExtentAndRotationGeoreference, Extent] =
+    const [esriConfig, Map, MapView, FeatureLayer, GeoJSONLayer] =
       await Promise.all([
         loadModule("esri/config"),
         loadModule("esri/Map"),
-        loadModule("esri/WebScene"),
         loadModule("esri/views/MapView"),
-        loadModule("esri/views/SceneView"),
         loadModule("esri/layers/FeatureLayer"),
-        loadModule("esri/widgets/Legend"),
         loadModule("esri/layers/GeoJSONLayer"),
-        loadModule("esri/layers/support/ImageElement"),
-        loadModule("esri/layers/MediaLayer"),
-        loadModule("esri/layers/support/ExtentAndRotationGeoreference"),
-        loadModule("esri/geometry/Extent"),
       ]);
 
     esriConfig.apiKey =
       "AAPKabb4ac113be142e7adef32d7fd2de45aY6aflWLbwtR92ugWYzDFyFwkUhMcUnO3NfDw2xWbV5BuGoHs3-AYvj4iCGTB7fEQ"; // Will change it
 
-    const region6 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#7f89a1",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const region5 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#99977F",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const region4 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#fffcd4",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const region3 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#b1cdc2",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const region2 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#38627a",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const region1 = {
-      type: "simple-fill", // autocasts as new SimpleFillSymbol()
-      color: "#0d2644",
-      style: "solid",
-      outline: {
-        width: 0.2,
-        color: [255, 255, 255, 0.5],
-      },
-    };
-
-    const renderer = {
-      type: "unique-value", // autocasts as new ClassBreaksRenderer()
-      field: "region",
-      // normalizationField: "EDUCBASECY",
-      legendOptions: {
-        title: "by regions in Kansas City",
-      },
-      defaultSymbol: {
-        type: "simple-fill", // autocasts as new SimpleFillSymbol()
-        color: "black",
-        style: "backward-diagonal",
-        outline: {
-          width: 0.5,
-          color: [50, 50, 50, 0.6],
-        },
-      },
-      defaultLabel: "no data",
-      uniqueValueInfos: [
-        {
-          value: "REGION 1",
-          symbol: region1,
-          label: "Region 1",
-        },
-        {
-          value: "REGION 2",
-          symbol: region2,
-          label: "Region 2",
-        },
-        {
-          value: "REGION 3",
-          symbol: region3,
-          label: "Region 3",
-        },
-        {
-          value: "REGION 4",
-          symbol: region4,
-          label: "Region 4",
-        },
-        {
-          value: "REGION 5",
-          symbol: region5,
-          label: "Region 5",
-        },
-        {
-          value: "REGION 6",
-          symbol: region6,
-          label: "Region 6",
-        },
-      ],
-    };
-
-
-    // function createTextSymbol(color) {
-    //   return {
-    //     type: "text", // autocasts as new TextSymbol()
-    //     font: {
-    //       size: 12,
-    //       weight: "bold"
-    //     },
-    //     color: "white",
-    //     haloColor: color,
-    //     haloSize: 1
-    //   };
-    // }
-
-    // const countryName = {
-    //   labelExpressionInfo: {
-    //     expression: $feature.Name
-    //   },
-    //   labelPlacement: "above-center",
-    //   // where: "TEMP <= 32"
-    // };
-    // countryName.symbol = createTextSymbol("#4792c1");
-
-
-    var CName = {
+    var COName = {
       labelExpressionInfo: {
         expression: `$feature.Name`
       },
@@ -223,7 +81,7 @@ async function initializeDynamicImage() {
       // where: "OBJECTID_1 = '1'"
     }
 
-    var attendedLiveEvent1 = {
+    var attendedLiveEventCO = {
       labelExpressionInfo: {
         expression: `$feature.attendedLiveEvent`
       },
@@ -242,7 +100,7 @@ async function initializeDynamicImage() {
       // where: "OBJECTID_1 = '1'"
     }
 
-    var attendedLiveEvent2 = {
+    var attendedLiveEventCO0 = {
       labelExpressionInfo: {
         expression: `"attended a live event"`
       },
@@ -264,7 +122,7 @@ async function initializeDynamicImage() {
       }
     }
 
-    var liveEventsAttended1 = {
+    var liveEventsAttendedCO = {
       labelExpressionInfo: {
         expression: `$feature.liveEventsAttended`
       },
@@ -282,7 +140,7 @@ async function initializeDynamicImage() {
       }
     }
 
-    var liveEventsAttended2 = {
+    var liveEventsAttendedCO0 = {
       labelExpressionInfo: {
         expression: `"live events attended"`
       },
@@ -303,7 +161,7 @@ async function initializeDynamicImage() {
       }
     }
 
-    var infoLeft = {
+    var infoLeftCO = {
       labelExpressionInfo: {
         expression: `$feature.attendedLiveEvent + " " + "in" + " " + $feature.Attribute_Year`
       },
@@ -327,7 +185,7 @@ async function initializeDynamicImage() {
       }
     }
 
-    var infoRight = {
+    var infoRightCO = {
       labelExpressionInfo: {
         expression: `$feature.attendedLiveEvent + " " + "in" + " " + $feature.Attribute_Year`
       },
@@ -356,7 +214,7 @@ async function initializeDynamicImage() {
         url: "./graphics.geojson",
         title: "Lables Countries",
         definitionExpression: "OBJECTID_1 = '1'",
-        labelingInfo: [CName, attendedLiveEvent1, attendedLiveEvent2, liveEventsAttended1, liveEventsAttended2, infoLeft, infoRight],
+        labelingInfo: [COName, attendedLiveEventCO, attendedLiveEventCO0, liveEventsAttendedCO, liveEventsAttendedCO0, infoLeftCO, infoRightCO],
         renderer: {
           type: "simple",
           symbol: {
@@ -386,55 +244,6 @@ async function initializeDynamicImage() {
       });
       displayMap.add(pointsLables);
     });
-
-
-    // #cfd3d4
-
-
-
-
-
-    // $.getJSON("./layer.geojson", function (data) {
-    //   worldC = new GeoJSONLayer({
-    //     url: "./layer.geojson",
-    //     title: "World Countries",
-    //     renderer: {
-    //       type: "simple",
-    //       symbol: {
-    //         type: "simple-fill",
-    //         color: [244, 166, 33, 0.5],
-    //         // outline: {
-    //         //     width: 0.7,
-    //         //     color: "#B30505"
-    //         // }
-    //       },
-    //     },
-    //     // popupTemplate: {
-    //     //   title: "{Name}",
-    //     //   content: [
-    //     //     {
-    //     //       type: "fields",
-    //     //       fieldInfos: [
-    //     //         {
-    //     //           fieldName: "OBJECTID",
-    //     //           label: "ID",
-    //     //         },
-    //     //         {
-    //     //           fieldName: "Name",
-    //     //           label: "Zone",
-    //     //         },
-    //     //       ],
-    //     //     },
-    //     //   ],
-    //     // },
-    //   });
-    //   displayMap.add(worldC);
-    // });
-
-
-
-
-
 
     displayMap = new Map({
       basemap: "arcgis-light-gray",
@@ -517,28 +326,6 @@ async function initializeDynamicImage() {
     // });
 
     await view.when();
-    
-    let legend = new Legend({
-      view: view,
-      // layerInfos: [
-      //   {
-      //     layer: District1_Neighborhoods,
-      //     title: "Region 1"
-      //   },
-      //   {
-      //     layer: District2_Neighborhoods,
-      //     title: "Region 2"
-      //   },
-      // ]
-    });
-    legend.headingLevel = 2;
-    legend.style = {
-      type: "card",
-      layout: "stack",
-    };
-    legend.basemapLegendVisible = true;
-    legend.hideLayersNotInCurrentView = true;
-    view.ui.add(legend, "bottom-left");
 
     view.whenLayerView(pointsLables).then(function (layerView) {
       console.log(pointsLables)
@@ -551,7 +338,7 @@ async function initializeDynamicImage() {
         }
       );
     });
-
+    
     //add widgets
     addWidgets()
       .then(([view, displayMap]) => {
@@ -567,7 +354,6 @@ async function initializeDynamicImage() {
         // Handle any errors here
       });
 
-    clickToDownloadScreenshot();
     return [view, displayMap]; // You can return the view object
   } catch (error) {
     console.error("Error initializing map:", error);
@@ -671,59 +457,6 @@ async function addWidgets() {
 
     view.ui.add([Expand5], { position: "top-left", index: 6 });
     view.ui.add("controlsWidget", "top-right");
-
-    await view.when();
-
-    return [view, displayMap]; // You can return the view object
-  } catch (error) {
-    console.error("Error initializing map:", error);
-    throw error; // Rethrow the error to handle it further, if needed
-  }
-}
-
-async function clickToDownloadScreenshot() {
-  try {
-    console.log("Hi in Screenshot function...");
-
-    document
-      .getElementById("takeScreenshotButton")
-      .addEventListener("click", () => {
-        view.takeScreenshot().then((screenshot) => {
-          console.log(screenshot.dataUrl);
-          downloadImage("screenshot.png", screenshot.dataUrl);
-        });
-      });
-
-    // helper function directly from
-    // https://developers.arcgis.com/javascript/latest/sample-code/sandbox/index.html?sample=sceneview-screenshot
-    function downloadImage(filename, dataUrl) {
-      // the download is handled differently in Microsoft browsers
-      // because the download attribute for <a> elements is not supported
-      if (!window.navigator.msSaveOrOpenBlob) {
-        // in browsers that support the download attribute
-        // a link is created and a programmatic click will trigger the download
-        const element = document.createElement("a");
-        element.setAttribute("href", dataUrl);
-        element.setAttribute("download", filename);
-        element.style.display = "none";
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-      } else {
-        // for MS browsers convert dataUrl to Blob
-        const byteString = atob(dataUrl.split(",")[1]);
-        const mimeString = dataUrl.split(",")[0].split(":")[1].split(";")[0];
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-          ia[i] = byteString.charCodeAt(i);
-        }
-        const blob = new Blob([ab], { type: mimeString });
-
-        // download file
-        window.navigator.msSaveOrOpenBlob(blob, filename);
-      }
-    }
 
     await view.when();
 
