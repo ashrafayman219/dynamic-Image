@@ -58,7 +58,7 @@ async function initializeDynamicImage() {
       ]);
 
     esriConfig.apiKey =
-      "AAPKabb4ac113be142e7adef32d7fd2de45aY6aflWLbwtR92ugWYzDFyFwkUhMcUnO3NfDw2xWbV5BuGoHs3-AYvj4iCGTB7fEQ"; // Will change it
+      "AAPKe82a7f283a764cb1be6a4da98fe17139dYwPvxCMRCv_w-DgBz2-tSRJeQJcDWq-0jOC2-zTEsTRbt-FLrLUYA1tn-h6Xbfy"; // Will change it
 
     var COName = {
       labelExpressionInfo: {
