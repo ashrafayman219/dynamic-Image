@@ -288,42 +288,6 @@ async function initializeDynamicImage() {
 
 
 
-    // view.on("click", function (event) {
-    //   view.hitTest(event).then(function (response) {
-    //     if (response.results.length) {
-    //       let graphic = response.results.filter(function (result) {
-    //         return (
-    //           result.graphic.layer === KCMO_Neighborhoods ||
-    //           result.graphic.layer === KansasCityBoundaries ||
-    //           result.graphic.layer === District1_Neighborhoods ||
-    //           result.graphic.layer === District2_Neighborhoods ||
-    //           result.graphic.layer === District3_Neighborhoods ||
-    //           result.graphic.layer === District4_Neighborhoods ||
-    //           result.graphic.layer === District5_Neighborhoods ||
-    //           result.graphic.layer === District6_Neighborhoods ||
-    //           result.graphic.layer === District1_Merged ||
-    //           result.graphic.layer === District2_Merged ||
-    //           result.graphic.layer === District3_Merged ||
-    //           result.graphic.layer === District4_Merged ||
-    //           result.graphic.layer === District5_Merged ||
-    //           result.graphic.layer === District6_Merged ||
-    //           result.graphic.layer === Waldo ||
-    //           result.graphic.layer === Brookside ||
-    //           result.graphic.layer === MidtownPlaza ||
-    //           result.graphic.layer === Downtown
-    //         );
-    //       })[0].graphic;
-    //       view.goTo(
-    //         {
-    //           target: graphic,
-    //         },
-    //         {
-    //           duration: 2000,
-    //         }
-    //       );
-    //     }
-    //   });
-    // });
 
     await view.when();
 
@@ -386,6 +350,11 @@ async function addWidgets() {
       loadModule("esri/widgets/ScaleBar"),
       loadModule("esri/widgets/Home"),
     ]);
+
+    var basemapGallery = new BasemapGallery({
+      view: view,
+    });
+
 
     var fullscreen = new Fullscreen({
       view: view,

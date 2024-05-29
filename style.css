@@ -8,30 +8,3 @@ body,
   background-color: #cfd3d4;
 }
 
-/* #info {
-  background-color: black;
-  opacity: 0.75;
-  color: orange;
-  font-size: 18pt;
-  padding: 8px;
-  visibility: hidden;
-}
-
-#dataContainer {
-  background-color: black;
-  opacity: 0.75;
-  color: orange;
-  font-size: .68rem;
-  padding: 8px;
-  visibility: hidden;
-} */
-
-#controlsWidget {
-  padding: 10px;
-  cursor: pointer;
-}
-
-
-#controlsWidget:hover {
-  background-color: rgb(44, 44, 44);
-}
